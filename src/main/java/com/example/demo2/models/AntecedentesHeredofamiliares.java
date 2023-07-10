@@ -4,6 +4,8 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Getter
@@ -11,7 +13,9 @@ import javax.persistence.Id;
 @Entity
 public class AntecedentesHeredofamiliares {
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int antecedentes_heredofamiliares;
+
     private int id_paciente;
     private char diabetes;
     private String diabetes_quien;
@@ -26,6 +30,5 @@ public class AntecedentesHeredofamiliares {
     private String nefropatias_quien;
     private String malformaciones;
     private String otros;
-
 
 }

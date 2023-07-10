@@ -27,6 +27,8 @@ public class Paciente {
     private String correo_electronico;
     private int id_antecedentes_personales;
     private int id_enfermedades;
-    private int id_antecedentes_heredofamiliares;
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JoinColumn(name = "id_paciente", referencedColumnName = "id_paciente")
+    private AntecedentesHeredofamiliares antecedentesHeredofamiliares;
     private int id_inmunizaciones;
 }
