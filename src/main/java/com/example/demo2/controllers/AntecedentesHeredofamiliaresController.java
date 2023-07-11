@@ -7,6 +7,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @CrossOrigin
 @RestController
 @RequestMapping("/antecedentes_heredofamiliares")
@@ -17,5 +19,8 @@ public class AntecedentesHeredofamiliaresController {
     public ResponseEntity<AntecedentesHeredofamiliares> postAntecedente(@RequestBody AntecedentesHeredofamiliares antecedentesHeredofamiliares){
         return new ResponseEntity<>(antecedentesHeredofamiliaresService.saveAntecendente(antecedentesHeredofamiliares), HttpStatus.OK);
     }
-
+    @GetMapping("/getAll")
+    public ResponseEntity<List<AntecedentesHeredofamiliares>> getAll(){
+        return new ResponseEntity<>(antecedentesHeredofamiliaresService.getAll(),HttpStatus.OK);
+    }
 }

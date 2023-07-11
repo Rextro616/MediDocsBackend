@@ -19,7 +19,8 @@ public class Usuario {
     private String usuario;
     private String usuario_contrasenia;
     private String nombre;
-    private String apellido;
+    private String apellido_paterno;
+    private String apellido_materno;
     private String sexo;
     private String fecha_nacimiento;
     private String correo_electronico;

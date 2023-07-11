@@ -25,14 +25,18 @@ public class Paciente {
     private String sexo;
     private String fecha_nacimiento;
     private String correo_electronico;
-    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @JoinColumn(name = "id_paciente", referencedColumnName = "id_paciente")
-    private AntecedentesPersonales antecedentesPersonales;
-    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+//    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+//    @JoinColumn(name = "id_paciente", referencedColumnName = "id_paciente")
+//    private AntecedentesPersonales antecedentesPersonales;
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "id_paciente", referencedColumnName = "id_paciente")
     private AntecedentesHeredofamiliares antecedentesHeredofamiliares;
 //    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-//    @JoinColumn(name = "id_paciente", referencedColumnName = "id_paciente")
+//    @JoinColumn(name = "id_paciente", referencedColumnName = "id_paciente") enfermedades
 //    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-//    @JoinColumn(name = "id_paciente", referencedColumnName = "id_paciente")
+//    @JoinColumn(name = "id_paciente", referencedColumnName = "id_paciente") inmunizaciones
+//    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+//    @JoinColumn(name = "id_medico", referencedColumnName = "id_medico")
+//    private Medico medico;
+
 }

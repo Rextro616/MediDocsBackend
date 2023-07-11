@@ -15,4 +15,8 @@ public class PacienteService {
     public List<Paciente> getAll() {
         return pacienteRepository.findAll();
     }
+
+    public Paciente postPaciente(Paciente paciente) {
+        return pacienteRepository.save(paciente);
+    }
 }

@@ -14,8 +14,7 @@ import javax.persistence.Id;
 public class AntecedentesHeredofamiliares {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int antecedentes_heredofamiliares;
-
+    private int id_antecedentes_heredofamiliares;
     private int id_paciente;
     private char diabetes;
     private String diabetes_quien;
