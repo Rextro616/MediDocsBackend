@@ -1,21 +1,19 @@
-package com.example.demo2.models;
+package com.example.demo2.models.antecedentesHeredofamiliares;
 
 import lombok.Getter;
 import lombok.Setter;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Getter
 @Setter
 @Entity
 public class AntecedentesHeredofamiliares {
     @Id
+    @Column(name = "id_antecedentes_heredofamiliares", unique = true, nullable = false)
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id_antecedentes_heredofamiliares;
-    private int id_paciente;
+    private int id;
+//    private int id_paciente;
     private char diabetes;
     private String diabetes_quien;
     private char hipertencion;

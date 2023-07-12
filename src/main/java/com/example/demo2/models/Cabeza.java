@@ -10,11 +10,11 @@ import javax.persistence.Id;
 @Setter
 @Entity
 public class Cabeza {
-    @Id
-    private int id_cabeza;
-    private String craneo_y_cara;
-    private String cuero_cabelludo;
-    private String region_frontal;
-    private String region_orbitonasal;
-    private String region_orofaringea;
+//    @Id
+//    private int id_cabeza;
+//    private String craneo_y_cara;
+//    private String cuero_cabelludo;
+//    private String region_frontal;
+//    private String region_orbitonasal;
+//    private String region_orofaringea;
 }

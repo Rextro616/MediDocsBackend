@@ -1,6 +1,6 @@
 package com.example.demo2.services;
 
-import com.example.demo2.models.AntecedentesHeredofamiliares;
+import com.example.demo2.models.antecedentesHeredofamiliares.AntecedentesHeredofamiliares;
 import com.example.demo2.repository.AntecedentesHeredofamiliaresRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

@@ -1,21 +1,22 @@
 package com.example.demo2.models;
 
-import lombok.Getter;
-import lombok.Setter;
+import com.example.demo2.models.habitosToxicos.HabitoToxico;
+import lombok.*;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
-@Getter
-@Setter
+@Data
+@AllArgsConstructor
+@Builder
+@NoArgsConstructor
 public class AntecedentesPersonales {
     @Id
+    @Column(name = "id_antecedentes_personales", unique = true, nullable = false)
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id_antecedentes_personales;
-    private int id_habitos_toxicos;
+    private int id;
+    @OneToOne(mappedBy = "antecedentesPersonales")
+    private HabitoToxico habitoToxico;
     private int id_habitos_fisiologicos;
     private int id_paciente;
 }

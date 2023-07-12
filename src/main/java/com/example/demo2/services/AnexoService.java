@@ -1,4 +1,4 @@
 package com.example.demo2.services;
 
-public class AnexosService {
+public class AnexoService {
 }

@@ -12,9 +12,9 @@ import javax.persistence.Id;
 @Getter
 @Setter
 public class Rol {
-    private String nombre;
-    private boolean status;
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+//    private String nombre;
+//    private boolean status;
+//    @Id
+//    @GeneratedValue(strategy = GenerationType.IDENTITY)
+//    private int id;
 }

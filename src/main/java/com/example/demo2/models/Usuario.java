@@ -13,17 +13,17 @@ import java.util.Date;
 @Setter
 @Getter
 public class Usuario {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id_usuario;
-    private String usuario;
-    private String usuario_contrasenia;
-    private String nombre;
-    private String apellido_paterno;
-    private String apellido_materno;
-    private String sexo;
-    private String fecha_nacimiento;
-    private String correo_electronico;
-    private int edad;
+//    @Id
+//    @GeneratedValue(strategy = GenerationType.IDENTITY)
+//    private int id_usuario;
+//    private String usuario;
+//    private String usuario_contrasenia;
+//    private String nombre;
+//    private String apellido_paterno;
+//    private String apellido_materno;
+//    private String sexo;
+//    private String fecha_nacimiento;
+//    private String correo_electronico;
+//    private int edad;
 
 }
