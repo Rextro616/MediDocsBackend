@@ -1,5 +1,6 @@
 package com.example.demo2.services;
 
+import com.example.demo2.models.antecedentesHeredofamiliares.AntecedenteHeredofamiliar;
 import com.example.demo2.models.antecedentesHeredofamiliares.AntecedenteHeredofamiliarDTO;
 import com.example.demo2.models.paciente.Paciente;
 import com.example.demo2.models.paciente.PacienteDTO;
@@ -46,6 +47,23 @@ public class PacienteService {
     }
 
     public Boolean postPaciente(PacienteDTO pacienteDTO) {
+        AntecedenteHeredofamiliarDTO antecedenteHeredofamiliarDTO = pacienteDTO.getAntecedenteHeredofamiliarDTO();
+        AntecedenteHeredofamiliar antecedenteHeredofamiliar = AntecedenteHeredofamiliar.builder()
+                .cancer(antecedenteHeredofamiliarDTO.getCancer())
+                .cancer_quien(antecedenteHeredofamiliarDTO.getCancer_quien())
+                .tipo_cancer(antecedenteHeredofamiliarDTO.getTipo_cancer())
+                .cardiopatias(antecedenteHeredofamiliarDTO.getCardiopatias())
+                .cardiopatias_quien(antecedenteHeredofamiliarDTO.getCardiopatias_quien())
+                .diabetes(antecedenteHeredofamiliarDTO.getDiabetes())
+                .diabetes_quien(antecedenteHeredofamiliarDTO.getDiabetes_quien())
+                .hipertencion(antecedenteHeredofamiliarDTO.getHipertencion())
+                .hipertencion_quien(antecedenteHeredofamiliarDTO.getHipertencion_quien())
+                .nefropatias(antecedenteHeredofamiliarDTO.getNefropatias())
+                .nefropatias_quien(antecedenteHeredofamiliarDTO.getNefropatias_quien())
+                .malformaciones(antecedenteHeredofamiliarDTO.getMalformaciones())
+                .otros(antecedenteHeredofamiliarDTO.getOtros())
+                .build();
+
         Paciente paciente = Paciente.builder()
                 .nombre(pacienteDTO.getNombre())
                 .apellidoPaterno(pacienteDTO.getApellidoPaterno())
@@ -59,6 +77,7 @@ public class PacienteService {
                 .nacionalidad(pacienteDTO.getNacionalidad())
                 .tipoSangre(pacienteDTO.getTipoSangre())
                 .telefono(pacienteDTO.getTelefono())
+                .antecedenteHeredofamiliar(antecedenteHeredofamiliar)
                 .build();
 
         return Objects.nonNull(pacienteRepository.save(paciente));

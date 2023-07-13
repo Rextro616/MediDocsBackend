@@ -6,8 +6,6 @@ import com.example.demo2.enums.SexoEnum;
 import com.example.demo2.enums.TipoSangreEnum;
 import com.example.demo2.models.antecedentesHeredofamiliares.AntecedenteHeredofamiliar;
 import com.example.demo2.models.antecedentesHeredofamiliares.AntecedenteHeredofamiliarDTO;
-import com.example.demo2.models.antecedentesPersonales.AntecedentePersonal;
-import com.example.demo2.models.antecedentesPersonales.AntecedentePersonalDTO;
 import lombok.*;
 
 import javax.persistence.*;
@@ -45,8 +43,8 @@ public class PacienteDTO {
     private Date fechaNacimiento;
     @NotBlank(message = "Se requiere correo electronico >:(")
     private String correoElectronico;
-    @NotBlank(message = "Se requiere un antecedente personal >:(")
-    private AntecedentePersonalDTO antecedentePersonal;
+//    @NotBlank(message = "Se requiere un antecedente personal >:(")
+//    private AntecedentePersonalDTO antecedentePersonal;
     @NotBlank(message = "Se requiere un antecedente heredofamiliar >:(")
     private AntecedenteHeredofamiliarDTO antecedenteHeredofamiliarDTO;
 

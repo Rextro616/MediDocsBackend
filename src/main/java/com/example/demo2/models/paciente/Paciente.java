@@ -4,9 +4,7 @@ import com.example.demo2.enums.EstadoCivilEnum;
 import com.example.demo2.enums.NacionalidadEnum;
 import com.example.demo2.enums.SexoEnum;
 import com.example.demo2.enums.TipoSangreEnum;
-import com.example.demo2.models.Medico;
 import com.example.demo2.models.antecedentesHeredofamiliares.AntecedenteHeredofamiliar;
-import com.example.demo2.models.antecedentesPersonales.AntecedentePersonal;
 import lombok.*;
 
 import javax.persistence.*;
@@ -49,9 +47,9 @@ public class Paciente {
     private Date fechaNacimiento;
     @Column(name = "correo_electronico", nullable = false, length = 100)
     private String correoElectronico;
-    @OneToOne
-    @JoinColumn(name = "id_antecedentes_personales")
-    private AntecedentePersonal antecedentePersonal;
+//    @OneToOne
+//    @JoinColumn(name = "id_antecedentes_personales")
+//    private AntecedentePersonal antecedentePersonal;
     @OneToOne
     @JoinColumn(name = "id_antecedentes_heredofamiliares")
     private AntecedenteHeredofamiliar antecedenteHeredofamiliar;
@@ -59,8 +57,8 @@ public class Paciente {
 //    @JoinColumn(name = "id_paciente", referencedColumnName = "id_paciente") enfermedades
 //    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 //    @JoinColumn(name = "id_paciente", referencedColumnName = "id_paciente") inmunizaciones
-    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JoinColumn(name = "id_medico", referencedColumnName = "id_medico")
-    private Medico medico;
+//    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+//    @JoinColumn(name = "id_medico", referencedColumnName = "id_medico")
+//    private Medico medico;
 
 }
