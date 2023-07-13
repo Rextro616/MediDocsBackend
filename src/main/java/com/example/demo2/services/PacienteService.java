@@ -1,5 +1,6 @@
 package com.example.demo2.services;
 
+import com.example.demo2.models.antecedentesHeredofamiliares.AntecedenteHeredofamiliarDTO;
 import com.example.demo2.models.paciente.Paciente;
 import com.example.demo2.models.paciente.PacienteDTO;
 import com.example.demo2.repository.PacienteRepository;
@@ -15,6 +16,7 @@ import java.util.Objects;
 public class PacienteService {
     @Autowired
     PacienteRepository pacienteRepository;
+    AntecedenteHeredofamiliarService antecedenteHeredofamiliarService;
 
     public List<PacienteDTO> getAll() {
         List<Paciente> pacienteList = pacienteRepository.findAll();
@@ -34,6 +36,7 @@ public class PacienteService {
                     .nacionalidad(paciente.getNacionalidad())
                     .tipoSangre(paciente.getTipoSangre())
                     .telefono(paciente.getTelefono())
+                    .antecedenteHeredofamiliarDTO(antecedenteHeredofamiliarService.getById(paciente.getAntecedenteHeredofamiliar().getId()))
                     .build();
 
             pacienteDTOList.add(pacienteDTO);

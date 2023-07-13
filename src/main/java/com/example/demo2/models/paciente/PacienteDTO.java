@@ -4,6 +4,10 @@ import com.example.demo2.enums.EstadoCivilEnum;
 import com.example.demo2.enums.NacionalidadEnum;
 import com.example.demo2.enums.SexoEnum;
 import com.example.demo2.enums.TipoSangreEnum;
+import com.example.demo2.models.antecedentesHeredofamiliares.AntecedenteHeredofamiliar;
+import com.example.demo2.models.antecedentesHeredofamiliares.AntecedenteHeredofamiliarDTO;
+import com.example.demo2.models.antecedentesPersonales.AntecedentePersonal;
+import com.example.demo2.models.antecedentesPersonales.AntecedentePersonalDTO;
 import lombok.*;
 
 import javax.persistence.*;
@@ -16,8 +20,6 @@ import java.util.Date;
 @Builder
 @NoArgsConstructor
 public class PacienteDTO {
-    private int id;
-    //    private int id_usuario;
     @NotBlank(message = "Se requiere ocupación >:(")
     private String ocupacion;
     @NotNull(message = "Se requiere estado civil >:(")
@@ -43,5 +45,9 @@ public class PacienteDTO {
     private Date fechaNacimiento;
     @NotBlank(message = "Se requiere correo electronico >:(")
     private String correoElectronico;
+    @NotBlank(message = "Se requiere un antecedente personal >:(")
+    private AntecedentePersonalDTO antecedentePersonal;
+    @NotBlank(message = "Se requiere un antecedente heredofamiliar >:(")
+    private AntecedenteHeredofamiliarDTO antecedenteHeredofamiliarDTO;
 
 }

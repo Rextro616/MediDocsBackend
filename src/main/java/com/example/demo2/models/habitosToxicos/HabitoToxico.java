@@ -1,6 +1,6 @@
 package com.example.demo2.models.habitosToxicos;
 
-import com.example.demo2.models.AntecedentesPersonales;
+import com.example.demo2.models.antecedentesPersonales.AntecedentePersonal;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -35,5 +35,5 @@ public class HabitoToxico {
     private String actividad_fisica;
     @OneToOne
     @JoinColumn(name = "id_antecedentes_personales")
-    private AntecedentesPersonales antecedentesPersonales;
+    private AntecedentePersonal antecedentePersonal;
 }

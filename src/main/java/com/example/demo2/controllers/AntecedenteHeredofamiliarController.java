@@ -1,7 +1,7 @@
 package com.example.demo2.controllers;
 
-import com.example.demo2.models.antecedentesHeredofamiliares.AntecedentesHeredofamiliares;
-import com.example.demo2.services.AntecedentesHeredofamiliaresService;
+import com.example.demo2.models.antecedentesHeredofamiliares.AntecedenteHeredofamiliarDTO;
+import com.example.demo2.services.AntecedenteHeredofamiliarService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -12,15 +12,15 @@ import java.util.List;
 @CrossOrigin
 @RestController
 @RequestMapping("/antecedentes_heredofamiliares")
-public class AntecedentesHeredofamiliaresController {
+public class AntecedenteHeredofamiliarController {
     @Autowired
-    AntecedentesHeredofamiliaresService antecedentesHeredofamiliaresService;
+    AntecedenteHeredofamiliarService antecedentesHeredofamiliaresService;
     @PostMapping("/postAntecendente")
-    public ResponseEntity<AntecedentesHeredofamiliares> postAntecedente(@RequestBody AntecedentesHeredofamiliares antecedentesHeredofamiliares){
+    public ResponseEntity<Boolean> postAntecedente(@RequestBody AntecedenteHeredofamiliarDTO antecedentesHeredofamiliares){
         return new ResponseEntity<>(antecedentesHeredofamiliaresService.saveAntecendente(antecedentesHeredofamiliares), HttpStatus.OK);
     }
     @GetMapping("/getAll")
-    public ResponseEntity<List<AntecedentesHeredofamiliares>> getAll(){
+    public ResponseEntity<List<AntecedenteHeredofamiliarDTO>> getAll(){
         return new ResponseEntity<>(antecedentesHeredofamiliaresService.getAll(),HttpStatus.OK);
     }
 }
