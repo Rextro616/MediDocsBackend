@@ -77,8 +77,8 @@ public class PacienteService {
                 .nacionalidad(pacienteDTO.getNacionalidad())
                 .tipoSangre(pacienteDTO.getTipoSangre())
                 .telefono(pacienteDTO.getTelefono())
-                .antecedenteHeredofamiliar(antecedenteHeredofamiliar)
                 .build();
+        paciente.setAntecedenteHeredofamiliar(antecedenteHeredofamiliar);
 
         return Objects.nonNull(pacienteRepository.save(paciente));
     }

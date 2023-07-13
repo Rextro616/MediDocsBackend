@@ -20,38 +20,47 @@ public class Paciente {
     @Column(name = "id_paciente", unique = true, nullable = false)
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
+
     @Column(nullable = false, length = 30)
     private String ocupacion;
+
     @Column(name = "estado_civil", nullable = false, length = 10)
-    @Enumerated(EnumType.STRING)
     private EstadoCivilEnum estadoCivil;
+
     @Column(nullable = false, length = 10)
-    @Enumerated(EnumType.STRING)
     private NacionalidadEnum nacionalidad;
+
     @Column(name = "tipo_sangre", nullable = false, length = 10)
-    @Enumerated(EnumType.STRING)
     private TipoSangreEnum tipoSangre;
+
     @Column(nullable = false, length = 10)
     private String telefono;
+
     @Column(nullable = false, length = 200)
     private String domicilio;
+
     @Column(nullable = false, length = 50)
     private String nombre;
+
     @Column(name = "apellido_paterno", nullable = false, length = 20)
     private String apellidoPaterno;
+
     @Column(name = "apellido_materno", nullable = false, length = 20)
     private String apellidoMaterno;
+
     @Column( nullable = false, length = 10)
     private SexoEnum sexo;
+
     @Column(name = "fecha_nacimiento", nullable = false)
     private Date fechaNacimiento;
+
     @Column(name = "correo_electronico", nullable = false, length = 100)
     private String correoElectronico;
 //    @OneToOne
 //    @JoinColumn(name = "id_antecedentes_personales")
 //    private AntecedentePersonal antecedentePersonal;
-    @OneToOne
-    @JoinColumn(name = "id_antecedentes_heredofamiliares")
+
+    @OneToOne(mappedBy = "paciente", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private AntecedenteHeredofamiliar antecedenteHeredofamiliar;
 //    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 //    @JoinColumn(name = "id_paciente", referencedColumnName = "id_paciente") enfermedades

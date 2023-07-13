@@ -10,13 +10,13 @@ public enum TipoSangreEnum {
     O_POSITIVO("O+"),
     O_NEGATIVO("O-");
 
-    private String abreviacion;
+    private String value;
 
-    TipoSangreEnum(String abreviacion) {
-        this.abreviacion = abreviacion;
+    TipoSangreEnum(String value) {
+        this.value = value;
     }
 
-    public String getAbreviacion() {
-        return abreviacion;
+    public String getValue() {
+        return value;
     }
 }
