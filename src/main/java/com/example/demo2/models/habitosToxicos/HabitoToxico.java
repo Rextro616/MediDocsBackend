@@ -1,39 +1,40 @@
-//package com.example.demo2.models.habitosToxicos;
-//
-//import com.example.demo2.models.antecedentesPersonales.AntecedentePersonal;
-//import lombok.AllArgsConstructor;
-//import lombok.Builder;
-//import lombok.Data;
-//import lombok.NoArgsConstructor;
-//
-//import javax.persistence.*;
-//
-//@Entity
-//@Data
-//@AllArgsConstructor
-//@Builder
-//@NoArgsConstructor
-//public class HabitoToxico {
-//    @Id
-//    @Column(name = "id_habitos_toxicos", unique = true, nullable = false)
-//    @GeneratedValue(strategy = GenerationType.AUTO)
-//    private int id;
-//    @Id
-//    @Column(nullable = false,  length = 100)
-//    private String alcohol;
-//    @Id
-//    @Column(nullable = false,  length = 100)
-//    private String tabaco;
-//    @Id
-//    @Column(nullable = false,  length = 100)
-//    private String drogas;
-//    @Id
-//    @Column(nullable = false,  length = 100)
-//    private String infusiones;
-//    @Id
-//    @Column(nullable = false,  length = 100)
-//    private String actividad_fisica;
-//    @OneToOne
-//    @JoinColumn(name = "id_antecedentes_personales")
-//    private AntecedentePersonal antecedentePersonal;
-//}
+package com.example.demo2.models.habitosToxicos;
+
+import com.example.demo2.models.antecedentesPersonales.AntecedentePersonal;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+import javax.persistence.*;
+
+@Entity
+@Data
+@AllArgsConstructor
+@Builder
+@NoArgsConstructor
+public class HabitoToxico {
+    @Id
+    @Column(name = "id_habitos_toxicos", unique = true, nullable = false)
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private int id;
+
+    @Column(nullable = false,  length = 100)
+    private String alcohol;
+
+    @Column(nullable = false,  length = 100)
+    private String tabaco;
+
+    @Column(nullable = false,  length = 100)
+    private String drogas;
+
+    @Column(nullable = false,  length = 100)
+    private String infusiones;
+
+    @Column(nullable = false,  length = 100)
+    private String actividad_fisica;
+
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JoinColumn(name = "id_antecedentes_personales")
+    private AntecedentePersonal antecedentePersonal;
+}

@@ -4,11 +4,10 @@ import com.example.demo2.enums.EstadoCivilEnum;
 import com.example.demo2.enums.NacionalidadEnum;
 import com.example.demo2.enums.SexoEnum;
 import com.example.demo2.enums.TipoSangreEnum;
-import com.example.demo2.models.antecedentesHeredofamiliares.AntecedenteHeredofamiliar;
 import com.example.demo2.models.antecedentesHeredofamiliares.AntecedenteHeredofamiliarDTO;
+import com.example.demo2.models.antecedentesPersonales.AntecedentePersonalDTO;
 import lombok.*;
 
-import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -55,8 +54,8 @@ public class PacienteDTO {
     @NotBlank(message = "Se requiere correo electronico >:(")
     private String correoElectronico;
 
-//    @NotBlank(message = "Se requiere un antecedente personal >:(")
-//    private AntecedentePersonalDTO antecedentePersonal;
+    @NotNull(message = "Se requiere un antecedente personal >:(")
+    private AntecedentePersonalDTO antecedentePersonalDTO;
     @NotNull(message = "Se requiere un antecedente heredofamiliar >:(")
     private AntecedenteHeredofamiliarDTO antecedenteHeredofamiliarDTO;
 

@@ -5,6 +5,7 @@ import com.example.demo2.enums.NacionalidadEnum;
 import com.example.demo2.enums.SexoEnum;
 import com.example.demo2.enums.TipoSangreEnum;
 import com.example.demo2.models.antecedentesHeredofamiliares.AntecedenteHeredofamiliar;
+import com.example.demo2.models.antecedentesPersonales.AntecedentePersonal;
 import lombok.*;
 
 import javax.persistence.*;
@@ -56,9 +57,8 @@ public class Paciente {
 
     @Column(name = "correo_electronico", nullable = false, length = 100)
     private String correoElectronico;
-//    @OneToOne
-//    @JoinColumn(name = "id_antecedentes_personales")
-//    private AntecedentePersonal antecedentePersonal;
+    @OneToOne(mappedBy = "paciente", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private AntecedentePersonal antecedentePersonal;
 
     @OneToOne(mappedBy = "paciente", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private AntecedenteHeredofamiliar antecedenteHeredofamiliar;

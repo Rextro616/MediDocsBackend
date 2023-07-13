@@ -1,4 +1,4 @@
-package com.example.demo2;
+package com.example.demo2.config;
 
 import springfox.documentation.service.ApiInfo;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
