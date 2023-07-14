@@ -36,6 +36,6 @@ public class HabitoToxico {
     private String actividad_fisica;
 
     @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @JoinColumn(name = "id_paciente", nullable = false)
+    @JoinColumn(name = "id_paciente")
     private Paciente paciente;
 }
