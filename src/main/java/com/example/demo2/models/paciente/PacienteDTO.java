@@ -7,6 +7,7 @@ import com.example.demo2.enums.TipoSangreEnum;
 import com.example.demo2.models.antecedentesHeredofamiliares.AntecedenteHeredofamiliarDTO;
 import com.example.demo2.models.habitosFisiologicos.HabitoFisiologicoDTO;
 import com.example.demo2.models.habitosToxicos.HabitoToxicoDTO;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.*;
 
 import javax.validation.constraints.NotBlank;

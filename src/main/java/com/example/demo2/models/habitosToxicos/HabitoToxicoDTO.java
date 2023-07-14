@@ -1,5 +1,9 @@
 package com.example.demo2.models.habitosToxicos;
 
+import com.example.demo2.models.paciente.Paciente;
+import com.example.demo2.models.paciente.PacienteDTO;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -27,6 +31,10 @@ public class HabitoToxicoDTO {
 
     @NotBlank(message = "Se requiere el campo de actividad fisica >:(")
     private String actividad_fisica;
+
+    @JsonIgnore
+    private PacienteDTO paciente;
+
 
 
 }

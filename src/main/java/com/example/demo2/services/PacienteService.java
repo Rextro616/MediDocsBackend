@@ -28,48 +28,28 @@ public class PacienteService {
     @Autowired
     ModelMapper modelMapper;
 
-    public List<PacienteDTO> getAll() {
-        List<Paciente> pacienteList = pacienteRepository.findAll();
-        List<PacienteDTO> pacienteDTOList = new ArrayList<>();
-
-        pacienteList.forEach(paciente -> {
-            PacienteDTO pacienteDTO = PacienteDTO.builder()
-                    .nombre(paciente.getNombre())
-                    .apellidoPaterno(paciente.getApellidoPaterno())
-                    .apellidoMaterno(paciente.getApellidoMaterno())
-                    .ocupacion(paciente.getOcupacion())
-                    .sexo(paciente.getSexo())
-                    .correoElectronico(paciente.getCorreoElectronico())
-                    .domicilio(paciente.getDomicilio())
-                    .estadoCivil(paciente.getEstadoCivil())
-                    .fechaNacimiento(paciente.getFechaNacimiento())
-                    .nacionalidad(paciente.getNacionalidad())
-                    .tipoSangre(paciente.getTipoSangre())
-                    .telefono(paciente.getTelefono())
-                    .build();
-
-            pacienteDTOList.add(pacienteDTO);
-        });
-
-        return pacienteDTOList;
+    public List<Paciente> getAll() {
+        return pacienteRepository.findAll();
     }
     @Transactional
     public Boolean postPaciente(PacienteDTO pacienteDTO) {
 
-        Paciente paciente1 = modelMapper.map(pacienteDTO,Paciente.class);
-        pacienteRepository.save(paciente1);
+        Paciente paciente = modelMapper.map(pacienteDTO,Paciente.class);
+        //pacienteRepository.save(paciente1);
 
-        AntecedenteHeredofamiliar antecedenteHeredofamiliar = paciente1.getAntecedenteHeredofamiliar();
-        antecedenteHeredofamiliar.setPaciente(paciente1);
-        antecedenteHeredofamiliarRepository.save(antecedenteHeredofamiliar);
 
-        HabitoToxico habitoToxico = paciente1.getHabitoToxico();
-        habitoToxico.setPaciente(paciente1);
-        habitoToxicoRepository.save(habitoToxico);
+        //AntecedenteHeredofamiliar antecedenteHeredofamiliar = paciente1.getAntecedenteHeredofamiliar();
+        //antecedenteHeredofamiliar.setPaciente(paciente1);
+        //antecedenteHeredofamiliarRepository.save(antecedenteHeredofamiliar);
 
-        HabitoFisiologico habitoFisiologico = paciente1.getHabitoFisiologico();
-        habitoFisiologico.setPaciente(paciente1);
-        habitoFisiologicoRepository.save(habitoFisiologico);
+        //HabitoToxico habitoToxico = paciente1.getHabitoToxico();
+        //habitoToxico.setPaciente(paciente1);
+        //habitoToxicoRepository.save(habitoToxico);
+
+        //HabitoFisiologico habitoFisiologico = paciente1.getHabitoFisiologico();
+        //habitoFisiologico.setPaciente(paciente1);
+        //habitoFisiologicoRepository.save(habitoFisiologico);
+        pacienteRepository.save(paciente);
 
         return true;
     }

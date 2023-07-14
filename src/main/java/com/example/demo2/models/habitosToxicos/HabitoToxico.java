@@ -2,6 +2,9 @@ package com.example.demo2.models.habitosToxicos;
 
 
 import com.example.demo2.models.paciente.Paciente;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -17,7 +20,7 @@ import javax.persistence.*;
 public class HabitoToxico {
     @Id
     @Column(name = "id_habitos_toxicos", unique = true, nullable = false)
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
     @Column(nullable = false,  length = 100)
@@ -35,7 +38,8 @@ public class HabitoToxico {
     @Column(nullable = false,  length = 100)
     private String actividad_fisica;
 
-    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @JoinColumn(name = "id_paciente")
+
+    @JsonIgnore
+    @OneToOne(mappedBy = "habitoToxico", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private Paciente paciente;
 }

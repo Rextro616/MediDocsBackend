@@ -7,7 +7,10 @@ import com.example.demo2.enums.TipoSangreEnum;
 import com.example.demo2.models.antecedentesHeredofamiliares.AntecedenteHeredofamiliar;
 import com.example.demo2.models.habitosFisiologicos.HabitoFisiologico;
 import com.example.demo2.models.habitosToxicos.HabitoToxico;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -18,9 +21,10 @@ import java.util.Date;
 @Builder
 @NoArgsConstructor
 public class Paciente {
+
     @Id
     @Column(name = "id_paciente", unique = true, nullable = false)
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
     @Column(nullable = false, length = 30)
@@ -59,14 +63,22 @@ public class Paciente {
     @Column(name = "correo_electronico", nullable = false, length = 100)
     private String correoElectronico;
 
-    @OneToOne(mappedBy = "paciente", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinColumn(name = "id_antecedentes_heredofamiliares", nullable = false)
     private AntecedenteHeredofamiliar antecedenteHeredofamiliar;
 
-    @OneToOne(mappedBy = "paciente", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinColumn(name = "id_habitos_toxicos", nullable = false)
     private HabitoToxico habitoToxico;
 
-    @OneToOne(mappedBy = "paciente", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinColumn(name = "id_habitos_fisiologicos", nullable = false)
     private HabitoFisiologico habitoFisiologico;
+
+
+
 
 //    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 //    @JoinColumn(name = "id_paciente", referencedColumnName = "id_paciente") enfermedades

@@ -1,5 +1,10 @@
 package com.example.demo2.models.habitosFisiologicos;
 
+import com.example.demo2.models.paciente.Paciente;
+import com.example.demo2.models.paciente.PacienteDTO;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -33,5 +38,9 @@ public class HabitoFisiologicoDTO {
     private String alergias;
 
     private String otros;
+
+    @JsonIgnore
+    private PacienteDTO paciente;
+
 
 }

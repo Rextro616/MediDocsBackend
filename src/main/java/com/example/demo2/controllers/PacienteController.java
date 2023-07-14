@@ -21,7 +21,7 @@ public class PacienteController {
     @Autowired
     PacienteService pacienteService;
     @GetMapping("/getAll")
-    public ResponseEntity<List<PacienteDTO>> getAll() {
+    public ResponseEntity<List<Paciente>> getAll() {
         return new ResponseEntity<>(pacienteService.getAll(), HttpStatus.OK);
     }
     @PostMapping("/post")
