@@ -1,7 +1,5 @@
 package com.example.demo2.services;
 
-import com.example.demo2.models.antecedentesPersonales.AntecedentePersonal;
-import com.example.demo2.models.antecedentesPersonales.AntecedentePersonalDTO;
 import com.example.demo2.models.habitosToxicos.HabitoToxico;
 import com.example.demo2.models.habitosToxicos.HabitoToxicoDTO;
 import com.example.demo2.repository.HabitoToxicoRepository;

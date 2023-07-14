@@ -17,7 +17,7 @@ public class AntecedenteHeredofamiliar {
     private int id;
 
     @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @JoinColumn(name = "id_paciente")
+    @JoinColumn(name = "id_paciente", nullable = false)
     private Paciente paciente;
 
     @Column(nullable = false)

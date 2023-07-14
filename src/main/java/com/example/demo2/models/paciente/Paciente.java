@@ -5,7 +5,8 @@ import com.example.demo2.enums.NacionalidadEnum;
 import com.example.demo2.enums.SexoEnum;
 import com.example.demo2.enums.TipoSangreEnum;
 import com.example.demo2.models.antecedentesHeredofamiliares.AntecedenteHeredofamiliar;
-import com.example.demo2.models.antecedentesPersonales.AntecedentePersonal;
+import com.example.demo2.models.habitosFisiologicos.HabitoFisiologico;
+import com.example.demo2.models.habitosToxicos.HabitoToxico;
 import lombok.*;
 
 import javax.persistence.*;
@@ -57,11 +58,16 @@ public class Paciente {
 
     @Column(name = "correo_electronico", nullable = false, length = 100)
     private String correoElectronico;
-    @OneToOne(mappedBy = "paciente", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private AntecedentePersonal antecedentePersonal;
 
     @OneToOne(mappedBy = "paciente", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private AntecedenteHeredofamiliar antecedenteHeredofamiliar;
+
+    @OneToOne(mappedBy = "paciente", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private HabitoToxico habitoToxico;
+
+    @OneToOne(mappedBy = "paciente", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private HabitoFisiologico habitoFisiologico;
+
 //    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 //    @JoinColumn(name = "id_paciente", referencedColumnName = "id_paciente") enfermedades
 //    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)

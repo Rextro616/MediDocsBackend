@@ -16,8 +16,6 @@ import javax.validation.constraints.Size;
 @NoArgsConstructor
 public class AntecedenteHeredofamiliarDTO {
 
-//    private PacienteDTO pacienteDTO;
-
     @NotBlank(message = "Se requiere un campo lleno")
     @Size(message = "Tamaño de 1 máximo", max = 10)
     private char diabetes;

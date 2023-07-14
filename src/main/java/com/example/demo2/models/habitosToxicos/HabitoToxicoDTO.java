@@ -1,6 +1,5 @@
 package com.example.demo2.models.habitosToxicos;
 
-import com.example.demo2.models.antecedentesPersonales.AntecedentePersonalDTO;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -29,6 +28,5 @@ public class HabitoToxicoDTO {
     @NotBlank(message = "Se requiere el campo de actividad fisica >:(")
     private String actividad_fisica;
 
-    @NotNull(message = "Se requiere el campo de antecedentes Personales >:(")
-    private AntecedentePersonalDTO antecedentePersonalDTO;
+
 }

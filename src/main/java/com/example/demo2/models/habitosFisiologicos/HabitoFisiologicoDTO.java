@@ -1,6 +1,5 @@
 package com.example.demo2.models.habitosFisiologicos;
 
-import com.example.demo2.models.antecedentesPersonales.AntecedentePersonal;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -35,6 +34,4 @@ public class HabitoFisiologicoDTO {
 
     private String otros;
 
-    @NotNull(message = "Se requiere llenar el campo de antecedentes personales >:(")
-    private AntecedentePersonal antecedentePersonal;
 }

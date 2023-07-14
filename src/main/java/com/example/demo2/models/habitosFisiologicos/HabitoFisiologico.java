@@ -1,6 +1,6 @@
 package com.example.demo2.models.habitosFisiologicos;
 
-import com.example.demo2.models.antecedentesPersonales.AntecedentePersonal;
+import com.example.demo2.models.paciente.Paciente;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -41,7 +41,7 @@ public class HabitoFisiologico {
     private String otros;
 
     @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @JoinColumn(name = "id_antecedentes_personales")
-    private AntecedentePersonal antecedentePersonal;
+    @JoinColumn(name = "id_paciente", nullable = false)
+    private Paciente paciente;
 
 }
