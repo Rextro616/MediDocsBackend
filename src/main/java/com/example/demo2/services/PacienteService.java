@@ -14,19 +14,17 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 
 @Service
 public class PacienteService {
     @Autowired
     PacienteRepository pacienteRepository;
     @Autowired
-    AntecedenteHeredofamiliarRepository antecedenteHeredofamiliarRepository;
-    @Autowired
-    HabitoToxicoRepository habitoToxicoRepository;
-    @Autowired
-    HabitoFisiologicoRepository habitoFisiologicoRepository;
-    @Autowired
     ModelMapper modelMapper;
+    public Optional<Paciente> getById(Integer id){
+        return  pacienteRepository.findById(id);
+    }
 
     public List<Paciente> getAll() {
         return pacienteRepository.findAll();

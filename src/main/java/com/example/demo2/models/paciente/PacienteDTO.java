@@ -19,6 +19,7 @@ import java.util.Date;
 @Builder
 @NoArgsConstructor
 public class PacienteDTO {
+    private Integer Id;
     @NotBlank(message = "Se requiere ocupación >:(")
     private String ocupacion;
 

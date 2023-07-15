@@ -63,11 +63,9 @@ public class Paciente {
     @Column(name = "correo_electronico", nullable = false, length = 100)
     private String correoElectronico;
 
-
     @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "id_antecedentes_heredofamiliares", nullable = false)
     private AntecedenteHeredofamiliar antecedenteHeredofamiliar;
-
 
     @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "id_habitos_toxicos", nullable = false)

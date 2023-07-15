@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @CrossOrigin
@@ -20,6 +21,11 @@ import java.util.stream.Collectors;
 public class PacienteController {
     @Autowired
     PacienteService pacienteService;
+    @GetMapping("/getById")
+    public ResponseEntity<Object> getById(@Valid @RequestBody Integer id){
+        Optional<Paciente> paciente = pacienteService.getById(id);
+        return paciente.<ResponseEntity<Object>>map(value -> new ResponseEntity<>(value, HttpStatus.OK)).orElseGet(() -> new ResponseEntity<>("Usuario no encontrado", HttpStatus.NOT_FOUND));
+    }
     @GetMapping("/getAll")
     public ResponseEntity<List<Paciente>> getAll() {
         return new ResponseEntity<>(pacienteService.getAll(), HttpStatus.OK);
