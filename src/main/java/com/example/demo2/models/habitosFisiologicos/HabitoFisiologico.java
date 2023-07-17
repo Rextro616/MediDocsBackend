@@ -43,7 +43,6 @@ public class HabitoFisiologico {
     @Column(length = 100)
     private String otros;
 
-
     @JsonIgnore
     @OneToOne(mappedBy = "habitoFisiologico", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private Paciente paciente;

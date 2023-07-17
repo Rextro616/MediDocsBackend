@@ -5,15 +5,19 @@ import com.example.demo2.enums.NacionalidadEnum;
 import com.example.demo2.enums.SexoEnum;
 import com.example.demo2.enums.TipoSangreEnum;
 import com.example.demo2.models.antecedentesHeredofamiliares.AntecedenteHeredofamiliar;
+import com.example.demo2.models.enfermedad.Enfermedad;
 import com.example.demo2.models.habitosFisiologicos.HabitoFisiologico;
 import com.example.demo2.models.habitosToxicos.HabitoToxico;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.cache.spi.support.AbstractReadWriteAccess;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Data
@@ -27,6 +31,9 @@ public class Paciente {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
+    @Column(nullable = false, length = 10)
+    private String telefono;
+
     @Column(nullable = false, length = 30)
     private String ocupacion;
 
@@ -38,9 +45,6 @@ public class Paciente {
 
     @Column(name = "tipo_sangre", nullable = false, length = 10)
     private TipoSangreEnum tipoSangre;
-
-    @Column(nullable = false, length = 10)
-    private String telefono;
 
     @Column(nullable = false, length = 200)
     private String domicilio;
@@ -75,15 +79,9 @@ public class Paciente {
     @JoinColumn(name = "id_habitos_fisiologicos", nullable = false)
     private HabitoFisiologico habitoFisiologico;
 
-
-
-
-//    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-//    @JoinColumn(name = "id_paciente", referencedColumnName = "id_paciente") enfermedades
-//    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-//    @JoinColumn(name = "id_paciente", referencedColumnName = "id_paciente") inmunizaciones
-//    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-//    @JoinColumn(name = "id_medico", referencedColumnName = "id_medico")
-//    private Medico medico;
+    @OneToMany(mappedBy = "paciente", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private List<Enfermedad> enfermedad = new ArrayList<>();
+//    inmunizaciones
+//    medico;
 
 }

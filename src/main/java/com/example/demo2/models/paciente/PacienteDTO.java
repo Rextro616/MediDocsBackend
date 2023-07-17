@@ -5,6 +5,7 @@ import com.example.demo2.enums.NacionalidadEnum;
 import com.example.demo2.enums.SexoEnum;
 import com.example.demo2.enums.TipoSangreEnum;
 import com.example.demo2.models.antecedentesHeredofamiliares.AntecedenteHeredofamiliarDTO;
+import com.example.demo2.models.enfermedad.Enfermedad;
 import com.example.demo2.models.habitosFisiologicos.HabitoFisiologicoDTO;
 import com.example.demo2.models.habitosToxicos.HabitoToxicoDTO;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
@@ -14,6 +15,8 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.util.Date;
+import java.util.List;
+
 @Data
 @AllArgsConstructor
 @Builder
@@ -65,5 +68,8 @@ public class PacienteDTO {
 
     @NotNull(message = "Se requiere un antecedente heredofamiliar >:(")
     private AntecedenteHeredofamiliarDTO antecedenteHeredofamiliar;
+
+    @NotNull(message = "Se requiere un antecedente heredofamiliar >:(")
+    private List<Enfermedad> enfermedad;
 
 }
