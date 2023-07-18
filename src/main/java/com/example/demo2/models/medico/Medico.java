@@ -1,5 +1,6 @@
 package com.example.demo2.models.medico;
 
+import com.example.demo2.models.paciente.Paciente;
 import com.example.demo2.models.usuario.Usuario;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -28,4 +29,8 @@ public class Medico {
 
     @Column(length = 50)
     private String especialidad;
+
+    @OneToOne(mappedBy = "medico", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    Paciente paciente;
+
 }

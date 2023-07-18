@@ -6,8 +6,11 @@ import com.example.demo2.enums.SexoEnum;
 import com.example.demo2.enums.TipoSangreEnum;
 import com.example.demo2.models.antecedentesHeredofamiliares.AntecedenteHeredofamiliarDTO;
 import com.example.demo2.models.enfermedad.Enfermedad;
+import com.example.demo2.models.enfermedad.EnfermedadDTO;
 import com.example.demo2.models.habitosFisiologicos.HabitoFisiologicoDTO;
 import com.example.demo2.models.habitosToxicos.HabitoToxicoDTO;
+import com.example.demo2.models.medico.Medico;
+import com.example.demo2.models.medico.MedicoDTO;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.*;
 
@@ -69,7 +72,9 @@ public class PacienteDTO {
     @NotNull(message = "Se requiere un antecedente heredofamiliar >:(")
     private AntecedenteHeredofamiliarDTO antecedenteHeredofamiliar;
 
-    @NotNull(message = "Se requiere un antecedente heredofamiliar >:(")
-    private List<Enfermedad> enfermedad;
+    private List<EnfermedadDTO> enfermedad;
+
+    @NotNull(message = "Se requiere un medico >:(")
+    private MedicoDTO medico;
 
 }

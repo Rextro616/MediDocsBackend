@@ -8,6 +8,7 @@ import com.example.demo2.models.antecedentesHeredofamiliares.AntecedenteHeredofa
 import com.example.demo2.models.enfermedad.Enfermedad;
 import com.example.demo2.models.habitosFisiologicos.HabitoFisiologico;
 import com.example.demo2.models.habitosToxicos.HabitoToxico;
+import com.example.demo2.models.medico.Medico;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -81,7 +82,11 @@ public class Paciente {
 
     @OneToMany(mappedBy = "paciente", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<Enfermedad> enfermedad = new ArrayList<>();
+
 //    inmunizaciones
-//    medico;
+
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinColumn(name = "id_medico", nullable = false)
+    private Medico medico;
 
 }

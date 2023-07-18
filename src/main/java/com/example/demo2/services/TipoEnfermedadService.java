@@ -15,5 +15,7 @@ public class TipoEnfermedadService {
     public List<TipoEnfermedad> getAll(){
         return tipoEnfermedadRepository.findAll();
     }
-
+    public Optional<TipoEnfermedad> getById(Integer id){
+        return tipoEnfermedadRepository.findById(id);
+    }
 }

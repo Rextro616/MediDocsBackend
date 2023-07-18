@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -18,6 +19,13 @@ public class PacienteService {
     PacienteRepository pacienteRepository;
     @Autowired
     ModelMapper modelMapper;
+
+    @Autowired
+    MedicoRepository medicoRepository;
+
+    @Autowired
+    TipoEnfermedadRepository tipoEnfermedadRepository;
+
     public Optional<Paciente> getById(Integer id){
         return  pacienteRepository.findById(id);
     }
@@ -28,10 +36,15 @@ public class PacienteService {
     @Transactional
     public Boolean postPaciente(PacienteDTO pacienteDTO) {
         if (pacienteRepository.validarPaciente(pacienteDTO.getCorreoElectronico(), pacienteDTO.getTelefono()) == null) {
+            //enfermedades y sus tipos
             Paciente paciente = modelMapper.map(pacienteDTO, Paciente.class);
+            paciente.getEnfermedad().forEach(enfermedad -> enfermedad.setTipoEnfermedad(tipoEnfermedadRepository.getById(enfermedad.getTipoEnfermedad().getId())));
+            //medico
+            paciente.setMedico(medicoRepository.getById(paciente.getMedico().getId()));
             pacienteRepository.save(paciente);
 
             paciente.getEnfermedad().forEach(enfermedad -> enfermedad.setPaciente(paciente));
+
             return true;
         }
         return false;

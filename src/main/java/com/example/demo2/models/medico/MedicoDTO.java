@@ -1,6 +1,9 @@
 package com.example.demo2.models.medico;
 
+import com.example.demo2.models.paciente.Paciente;
 import com.example.demo2.models.usuario.Usuario;
+import com.example.demo2.models.usuario.UsuarioDTO;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -14,11 +17,16 @@ import javax.validation.constraints.NotNull;
 @Builder
 @NoArgsConstructor
 public class MedicoDTO {
+    private Integer id;
     @NotNull(message = "Se requiere un usuario >:(")
-    private Usuario usuario;
+    private UsuarioDTO usuario;
 
     @NotBlank(message = "Se requiere cedula >:(")
     private String cedula;
 
     private String especialidad;
+
+    @JsonIgnore
+    private Paciente paciente;
+
 }
