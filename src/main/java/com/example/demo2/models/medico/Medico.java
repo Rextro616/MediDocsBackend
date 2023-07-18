@@ -2,6 +2,7 @@ package com.example.demo2.models.medico;
 
 import com.example.demo2.models.paciente.Paciente;
 import com.example.demo2.models.usuario.Usuario;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -20,7 +21,7 @@ public class Medico {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "id_usuario", nullable = false)
     private Usuario usuario;
 
@@ -29,7 +30,7 @@ public class Medico {
 
     @Column(length = 50)
     private String especialidad;
-
+    @JsonIgnore
     @OneToOne(mappedBy = "medico", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     Paciente paciente;
 

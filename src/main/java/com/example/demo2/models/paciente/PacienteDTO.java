@@ -9,8 +9,11 @@ import com.example.demo2.models.enfermedad.Enfermedad;
 import com.example.demo2.models.enfermedad.EnfermedadDTO;
 import com.example.demo2.models.habitosFisiologicos.HabitoFisiologicoDTO;
 import com.example.demo2.models.habitosToxicos.HabitoToxicoDTO;
+import com.example.demo2.models.historiaClinica.HistoriaClinicaDTO;
+import com.example.demo2.models.inmunizaciones.InmunizacionDTO;
 import com.example.demo2.models.medico.Medico;
 import com.example.demo2.models.medico.MedicoDTO;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.*;
 
@@ -73,8 +76,12 @@ public class PacienteDTO {
     private AntecedenteHeredofamiliarDTO antecedenteHeredofamiliar;
 
     private List<EnfermedadDTO> enfermedad;
+    private List<InmunizacionDTO> inmunizacion;
 
     @NotNull(message = "Se requiere un medico >:(")
     private MedicoDTO medico;
+
+    @JsonIgnore
+    private HistoriaClinicaDTO historiaClinicaDTO;
 
 }

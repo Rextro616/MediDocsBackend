@@ -1,6 +1,7 @@
 package com.example.demo2.models.medico;
 
 import com.example.demo2.models.paciente.Paciente;
+import com.example.demo2.models.paciente.PacienteDTO;
 import com.example.demo2.models.usuario.Usuario;
 import com.example.demo2.models.usuario.UsuarioDTO;
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -27,6 +28,6 @@ public class MedicoDTO {
     private String especialidad;
 
     @JsonIgnore
-    private Paciente paciente;
+    private PacienteDTO paciente;
 
 }

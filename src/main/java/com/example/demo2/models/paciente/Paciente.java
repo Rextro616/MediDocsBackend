@@ -8,11 +8,16 @@ import com.example.demo2.models.antecedentesHeredofamiliares.AntecedenteHeredofa
 import com.example.demo2.models.enfermedad.Enfermedad;
 import com.example.demo2.models.habitosFisiologicos.HabitoFisiologico;
 import com.example.demo2.models.habitosToxicos.HabitoToxico;
+import com.example.demo2.models.historiaClinica.HistoriaClinica;
+import com.example.demo2.models.inmunizaciones.Inmunizacion;
 import com.example.demo2.models.medico.Medico;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
 import org.hibernate.cache.spi.support.AbstractReadWriteAccess;
 
 import javax.persistence.*;
@@ -26,7 +31,6 @@ import java.util.List;
 @Builder
 @NoArgsConstructor
 public class Paciente {
-
     @Id
     @Column(name = "id_paciente", unique = true, nullable = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -80,13 +84,20 @@ public class Paciente {
     @JoinColumn(name = "id_habitos_fisiologicos", nullable = false)
     private HabitoFisiologico habitoFisiologico;
 
-    @OneToMany(mappedBy = "paciente", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @LazyCollection(LazyCollectionOption.FALSE)
+    @OneToMany(mappedBy = "paciente", cascade = CascadeType.ALL)
     private List<Enfermedad> enfermedad = new ArrayList<>();
 
-//    inmunizaciones
+    @LazyCollection(LazyCollectionOption.FALSE)
+    @OneToMany(mappedBy = "paciente", cascade = CascadeType.ALL)
+    private List<Inmunizacion> inmunizacion = new ArrayList<>();
 
     @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "id_medico", nullable = false)
     private Medico medico;
+
+    @JsonIgnore
+    @OneToOne(mappedBy = "paciente", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private HistoriaClinica historiaClinica;
 
 }

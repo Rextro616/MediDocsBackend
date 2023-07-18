@@ -7,24 +7,17 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 
-@Entity
 @Data
 @AllArgsConstructor
 @Builder
 @NoArgsConstructor
-public class Inmunizacion {
-    @Id
-    @Column(name = "id_inmunizaciones", unique = true, nullable = false)
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
-
-    @Column(nullable = false, length = 40)
+public class InmunizacionDTO {
+    @NotBlank(message = "Se requiere un nombre de la enfermedad >:(")
     private String nombre;
 
     @JsonIgnore
-    @ManyToOne
-    @JoinColumn(name = "id_paciente")
     private Paciente paciente;
+
 }

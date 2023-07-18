@@ -1,6 +1,6 @@
 package com.example.demo2.services;
 
-import com.example.demo2.models.enfermedad.Enfermedad;
+import com.example.demo2.models.medico.Medico;
 import com.example.demo2.models.paciente.Paciente;
 import com.example.demo2.models.paciente.PacienteDTO;
 import com.example.demo2.repository.*;
@@ -9,7 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -40,10 +39,13 @@ public class PacienteService {
             Paciente paciente = modelMapper.map(pacienteDTO, Paciente.class);
             paciente.getEnfermedad().forEach(enfermedad -> enfermedad.setTipoEnfermedad(tipoEnfermedadRepository.getById(enfermedad.getTipoEnfermedad().getId())));
             //medico
-            paciente.setMedico(medicoRepository.getById(paciente.getMedico().getId()));
+            Medico medico = medicoRepository.getById(paciente.getMedico().getId());
+            paciente.setMedico(medico);
             pacienteRepository.save(paciente);
 
+            paciente.getInmunizacion().forEach(inmunizacion -> inmunizacion.setPaciente(paciente));
             paciente.getEnfermedad().forEach(enfermedad -> enfermedad.setPaciente(paciente));
+            medico.setPaciente(paciente);
 
             return true;
         }

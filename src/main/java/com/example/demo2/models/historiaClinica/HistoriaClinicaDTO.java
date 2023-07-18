@@ -1,5 +1,6 @@
 package com.example.demo2.models.historiaClinica;
 
+import com.example.demo2.models.paciente.PacienteDTO;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -30,4 +31,6 @@ public class HistoriaClinicaDTO {
 
     private String planTerapeutico;
 
+    @NotBlank(message = "Se requiere llenar el campo de paciente >:(")
+    private PacienteDTO paciente;
 }
