@@ -7,8 +7,11 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Data
@@ -31,7 +34,8 @@ public class Medico {
     @Column(length = 50)
     private String especialidad;
     @JsonIgnore
-    @OneToOne(mappedBy = "medico", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    Paciente paciente;
+    @LazyCollection(LazyCollectionOption.FALSE)
+    @OneToMany(mappedBy = "medico", cascade = CascadeType.ALL)
+    private List<Paciente> paciente;
 
 }

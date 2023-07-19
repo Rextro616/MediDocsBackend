@@ -1,6 +1,7 @@
 package com.example.demo2.services;
 
 import com.example.demo2.models.medico.Medico;
+import com.example.demo2.models.medico.MedicoDTO;
 import com.example.demo2.models.paciente.Paciente;
 import com.example.demo2.models.paciente.PacienteDTO;
 import com.example.demo2.repository.*;
@@ -9,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -29,8 +31,15 @@ public class PacienteService {
         return  pacienteRepository.findById(id);
     }
 
-    public List<Paciente> getAll() {
-        return pacienteRepository.findAll();
+    public List<PacienteDTO> getAll(Integer idMedico) {
+        List<PacienteDTO> pacienteDTOS = new ArrayList<>();
+        pacienteRepository.findAll().forEach(paciente -> {
+            if (idMedico == paciente.getMedico().getId()){
+                pacienteDTOS.add(modelMapper.map(paciente, PacienteDTO.class));
+            }
+        });
+
+        return pacienteDTOS;
     }
     @Transactional
     public Boolean postPaciente(PacienteDTO pacienteDTO) {
@@ -45,7 +54,7 @@ public class PacienteService {
 
             paciente.getInmunizacion().forEach(inmunizacion -> inmunizacion.setPaciente(paciente));
             paciente.getEnfermedad().forEach(enfermedad -> enfermedad.setPaciente(paciente));
-            medico.setPaciente(paciente);
+            medico.getPaciente().add(paciente);
 
             return true;
         }

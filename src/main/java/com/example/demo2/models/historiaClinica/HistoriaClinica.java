@@ -1,14 +1,17 @@
 package com.example.demo2.models.historiaClinica;
 
+import com.example.demo2.models.examenFisico.ExamenFisico;
 import com.example.demo2.models.medico.Medico;
 import com.example.demo2.models.paciente.Paciente;
+import com.example.demo2.models.tejido.Tejido;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.util.Date;
+import java.sql.Date;
 
 @Entity
 @Data
@@ -42,7 +45,13 @@ public class HistoriaClinica {
     @Column(name = "plan_terapeutico", length = 200)
     private String planTerapeutico;
 
-    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JoinColumn(name = "id_paciente", nullable = false, referencedColumnName = "id_paciente")
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinColumn(name = "id_paciente", nullable = false)
     private Paciente paciente;
+
+    @OneToOne(mappedBy = "historiaClinica", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private ExamenFisico examenFisico;
+
+//    @OneToOne(mappedBy = "historiaClinica", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+//    private Tejido tejido;
 }

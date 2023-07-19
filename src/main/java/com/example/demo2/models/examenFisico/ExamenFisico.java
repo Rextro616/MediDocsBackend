@@ -1,5 +1,7 @@
 package com.example.demo2.models.examenFisico;
 
+import com.example.demo2.models.historiaClinica.HistoriaClinica;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -58,7 +60,10 @@ public class ExamenFisico {
     @Column(length = 200)
     private String marcha;
 
-
+    @JsonIgnore
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinColumn(name = "id_historiaclinica")
+    HistoriaClinica historiaClinica;
 
 
 }

@@ -1,5 +1,6 @@
 package com.example.demo2.controllers;
 
+import com.example.demo2.models.medico.MedicoDTO;
 import com.example.demo2.models.paciente.Paciente;
 import com.example.demo2.models.paciente.PacienteDTO;
 import com.example.demo2.services.PacienteService;
@@ -22,13 +23,13 @@ public class PacienteController {
     @Autowired
     PacienteService pacienteService;
     @GetMapping("/getById")
-    public ResponseEntity<Object> getById(@Valid @RequestBody Integer id){
+    public ResponseEntity<Object> getById(@Valid @RequestParam Integer id){
         Optional<Paciente> paciente = pacienteService.getById(id);
         return paciente.<ResponseEntity<Object>>map(value -> new ResponseEntity<>(value, HttpStatus.OK)).orElseGet(() -> new ResponseEntity<>("Usuario no encontrado", HttpStatus.NOT_FOUND));
     }
     @GetMapping("/getAll")
-    public ResponseEntity<List<Paciente>> getAll() {
-        return new ResponseEntity<>(pacienteService.getAll(), HttpStatus.OK);
+    public ResponseEntity<List<PacienteDTO>> getAll(@Valid @RequestParam Integer medicoID) {
+        return new ResponseEntity<>(pacienteService.getAll(medicoID), HttpStatus.OK);
     }
     @PostMapping("/post")
     public ResponseEntity<?> postPaciente(@Valid @RequestBody PacienteDTO paciente, BindingResult bindingResult){

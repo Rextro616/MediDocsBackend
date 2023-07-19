@@ -82,6 +82,6 @@ public class PacienteDTO {
     private MedicoDTO medico;
 
     @JsonIgnore
-    private HistoriaClinicaDTO historiaClinicaDTO;
+    private List<HistoriaClinicaDTO> historiaClinicaDTO;
 
 }

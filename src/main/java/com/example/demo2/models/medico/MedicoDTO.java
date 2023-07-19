@@ -12,6 +12,7 @@ import lombok.NoArgsConstructor;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+import java.util.List;
 
 @Data
 @AllArgsConstructor
@@ -28,6 +29,6 @@ public class MedicoDTO {
     private String especialidad;
 
     @JsonIgnore
-    private PacienteDTO paciente;
+    private List<PacienteDTO> paciente;
 
 }

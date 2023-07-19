@@ -1,5 +1,8 @@
 package com.example.demo2.models.examenFisico;
 
+import com.example.demo2.models.historiaClinica.HistoriaClinica;
+import com.example.demo2.models.historiaClinica.HistoriaClinicaDTO;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -41,5 +44,8 @@ public class ExamenFisicoDTO {
     private String decubito;
 
     private String marcha;
+
+    @JsonIgnore
+    private HistoriaClinicaDTO historiaClinica;
 
 }

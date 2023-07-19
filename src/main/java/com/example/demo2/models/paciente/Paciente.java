@@ -97,7 +97,8 @@ public class Paciente {
     private Medico medico;
 
     @JsonIgnore
-    @OneToOne(mappedBy = "paciente", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private HistoriaClinica historiaClinica;
+    @LazyCollection(LazyCollectionOption.FALSE)
+    @OneToMany(mappedBy = "paciente", cascade = CascadeType.ALL)
+    private List<HistoriaClinica> historiaClinica;
 
 }
