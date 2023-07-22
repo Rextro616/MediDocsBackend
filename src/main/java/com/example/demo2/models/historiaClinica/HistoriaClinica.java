@@ -1,7 +1,9 @@
 package com.example.demo2.models.historiaClinica;
 
+import com.example.demo2.models.cabeza.Cabeza;
 import com.example.demo2.models.examenFisico.ExamenFisico;
 import com.example.demo2.models.medico.Medico;
+import com.example.demo2.models.oftalmologico.Oftalmologico;
 import com.example.demo2.models.paciente.Paciente;
 import com.example.demo2.models.tejido.Tejido;
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -52,6 +54,12 @@ public class HistoriaClinica {
     @OneToOne(mappedBy = "historiaClinica", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private ExamenFisico examenFisico;
 
-//    @OneToOne(mappedBy = "historiaClinica", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-//    private Tejido tejido;
+    @OneToOne(mappedBy = "historiaClinica", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private Tejido tejido;
+
+    @OneToOne(mappedBy = "historiaClinica", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private Cabeza cabeza;
+
+    @OneToOne(mappedBy = "historiaClinica", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private Oftalmologico oftalmologico;
 }

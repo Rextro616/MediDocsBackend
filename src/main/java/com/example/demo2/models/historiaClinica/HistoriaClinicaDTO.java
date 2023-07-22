@@ -1,7 +1,10 @@
 package com.example.demo2.models.historiaClinica;
 
+import com.example.demo2.models.cabeza.CabezaDTO;
 import com.example.demo2.models.examenFisico.ExamenFisicoDTO;
+import com.example.demo2.models.oftalmologico.OftalmologicoDTO;
 import com.example.demo2.models.paciente.PacienteDTO;
+import com.example.demo2.models.tejido.TejidoDTO;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -37,5 +40,9 @@ public class HistoriaClinicaDTO {
 
     private ExamenFisicoDTO examenFisico;
 
+    private TejidoDTO tejido;
 
+    private CabezaDTO cabeza;
+
+    private OftalmologicoDTO oftalmologico;
 }

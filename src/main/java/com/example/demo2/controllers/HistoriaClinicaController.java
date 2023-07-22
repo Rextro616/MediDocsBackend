@@ -32,8 +32,8 @@ public class HistoriaClinicaController {
     }
 
     @GetMapping("/getById")
-    public ResponseEntity<List<HistoriaClinicaDTO>> getById(@Valid @RequestParam Integer id, String opcion){
+    public ResponseEntity<List<HistoriaClinicaDTO>> getById(@Valid @RequestParam Integer id){
 
-        return new ResponseEntity<>(historiaClinicaService.getById(id, opcion), HttpStatus.OK);
+        return new ResponseEntity<>(historiaClinicaService.getById(id), HttpStatus.OK);
     }
 }

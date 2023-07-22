@@ -32,11 +32,10 @@ public class PacienteService {
     }
 
     public List<PacienteDTO> getAll(Integer idMedico) {
+        Medico medico = medicoRepository.getById(idMedico);
         List<PacienteDTO> pacienteDTOS = new ArrayList<>();
-        pacienteRepository.findAll().forEach(paciente -> {
-            if (idMedico == paciente.getMedico().getId()){
-                pacienteDTOS.add(modelMapper.map(paciente, PacienteDTO.class));
-            }
+        medico.getPaciente().forEach(paciente -> {
+            pacienteDTOS.add(modelMapper.map(paciente, PacienteDTO.class));
         });
 
         return pacienteDTOS;
@@ -46,14 +45,20 @@ public class PacienteService {
         if (pacienteRepository.validarPaciente(pacienteDTO.getCorreoElectronico(), pacienteDTO.getTelefono()) == null) {
             //enfermedades y sus tipos
             Paciente paciente = modelMapper.map(pacienteDTO, Paciente.class);
-            paciente.getEnfermedad().forEach(enfermedad -> enfermedad.setTipoEnfermedad(tipoEnfermedadRepository.getById(enfermedad.getTipoEnfermedad().getId())));
+            if (paciente.getEnfermedad() != null){
+                paciente.getEnfermedad().forEach(enfermedad -> enfermedad.setTipoEnfermedad(tipoEnfermedadRepository.getById(enfermedad.getTipoEnfermedad().getId())));
+            }
             //medico
             Medico medico = medicoRepository.getById(paciente.getMedico().getId());
             paciente.setMedico(medico);
             pacienteRepository.save(paciente);
 
-            paciente.getInmunizacion().forEach(inmunizacion -> inmunizacion.setPaciente(paciente));
-            paciente.getEnfermedad().forEach(enfermedad -> enfermedad.setPaciente(paciente));
+            if (paciente.getInmunizacion() != null){
+                paciente.getInmunizacion().forEach(inmunizacion -> inmunizacion.setPaciente(paciente));
+            }
+            if (paciente.getEnfermedad() != null){
+                paciente.getEnfermedad().forEach(enfermedad -> enfermedad.setPaciente(paciente));
+            }
             medico.getPaciente().add(paciente);
 
             return true;
