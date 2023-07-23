@@ -2,6 +2,7 @@ package com.example.demo2.models.historiaClinica;
 
 import com.example.demo2.models.cabeza.Cabeza;
 import com.example.demo2.models.examenFisico.ExamenFisico;
+import com.example.demo2.models.exploracion.Exploracion;
 import com.example.demo2.models.medico.Medico;
 import com.example.demo2.models.oftalmologico.Oftalmologico;
 import com.example.demo2.models.paciente.Paciente;
@@ -14,6 +15,7 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.sql.Date;
+import java.util.List;
 
 @Entity
 @Data
@@ -62,4 +64,7 @@ public class HistoriaClinica {
 
     @OneToOne(mappedBy = "historiaClinica", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private Oftalmologico oftalmologico;
+
+    @OneToMany(mappedBy = "historiaClinica", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<Exploracion> exploracion;
 }

@@ -2,6 +2,7 @@ package com.example.demo2.models.historiaClinica;
 
 import com.example.demo2.models.cabeza.CabezaDTO;
 import com.example.demo2.models.examenFisico.ExamenFisicoDTO;
+import com.example.demo2.models.exploracion.ExploracionDTO;
 import com.example.demo2.models.oftalmologico.OftalmologicoDTO;
 import com.example.demo2.models.paciente.PacienteDTO;
 import com.example.demo2.models.tejido.TejidoDTO;
@@ -12,6 +13,7 @@ import lombok.NoArgsConstructor;
 
 import javax.validation.constraints.NotBlank;
 import java.sql.Date;
+import java.util.List;
 
 @Data
 @AllArgsConstructor
@@ -45,4 +47,6 @@ public class HistoriaClinicaDTO {
     private CabezaDTO cabeza;
 
     private OftalmologicoDTO oftalmologico;
+
+    private List<ExploracionDTO> exploracion;
 }

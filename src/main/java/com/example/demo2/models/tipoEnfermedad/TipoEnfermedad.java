@@ -23,6 +23,6 @@ public class TipoEnfermedad {
     private String nombre;
 
     @JsonIgnore
-    @OneToOne(mappedBy = "tipoEnfermedad", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToOne(mappedBy = "tipoEnfermedad", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private Enfermedad enfermedad;
 }

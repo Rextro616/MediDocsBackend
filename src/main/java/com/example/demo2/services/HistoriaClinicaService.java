@@ -2,6 +2,7 @@ package com.example.demo2.services;
 
 import com.example.demo2.models.cabeza.Cabeza;
 import com.example.demo2.models.examenFisico.ExamenFisico;
+import com.example.demo2.models.exploracion.Exploracion;
 import com.example.demo2.models.historiaClinica.HistoriaClinica;
 import com.example.demo2.models.historiaClinica.HistoriaClinicaDTO;
 import com.example.demo2.models.oftalmologico.Oftalmologico;
@@ -12,6 +13,7 @@ import com.example.demo2.repository.*;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.awt.*;
 import java.util.*;
@@ -40,38 +42,49 @@ public class HistoriaClinicaService {
     @Autowired
     OftalmologicoRepository oftalmologicoRepository;
 
-    public Boolean postHistoriaClinica(HistoriaClinicaDTO historiaClinicaDTO){
-        HistoriaClinica historiaClinica = new HistoriaClinica();
-        historiaClinica = modelMapper.map(historiaClinicaDTO, HistoriaClinica.class);
+    @Autowired
+    TipoExploracionRepository tipoExploracionRepository;
+
+    @Transactional
+    public Boolean postHistoriaClinica(HistoriaClinicaDTO historiaClinicaDTO) {
+        HistoriaClinica historiaClinica = modelMapper.map(historiaClinicaDTO, HistoriaClinica.class);
+        //exploracion 1
+        List<Exploracion> exploracion = historiaClinica.getExploracion();
+        if (exploracion != null){
+            exploracion.forEach(exploracion1 -> exploracion1.setTipoExploracion(tipoExploracionRepository.getById(exploracion1.getTipoExploracion().getId())));;
+        }
         //paciente
         historiaClinica.setPaciente(pacienteRepository.getById(historiaClinica.getPaciente().getId()));
         historiaClinicaRepository.save(historiaClinica);
         historiaClinica.getPaciente().getHistoriaClinica().add(historiaClinica);
         //examen fisico
         ExamenFisico fisico = historiaClinica.getExamenFisico();
-        if (fisico != null){
+        if (fisico != null) {
             fisico.setHistoriaClinica(historiaClinica);
             examenFisicoRepository.save(fisico);
         }
         //tejido
         Tejido tejido = historiaClinica.getTejido();
-        if (tejido != null){
+        if (tejido != null) {
             tejido.setHistoriaClinica(historiaClinica);
             tejidoRepository.save(tejido);
         }
         //cabeza
         Cabeza cabeza = historiaClinica.getCabeza();
-        if (cabeza != null){
+        if (cabeza != null) {
             cabeza.setHistoriaClinica(historiaClinica);
             cabezaRepository.save(cabeza);
         }
         //oftalmologico
         Oftalmologico oftalmologico = historiaClinica.getOftalmologico();
-        if (oftalmologico != null){
+        if (oftalmologico != null) {
             oftalmologico.setHistoriaClinica(historiaClinica);
             oftalmologicoRepository.save(oftalmologico);
         }
-
+        //exploracion
+        if (exploracion != null){
+            exploracion.forEach(exploracion1 -> exploracion1.setHistoriaClinica(historiaClinica));
+        }
 
         return true;
     }

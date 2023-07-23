@@ -17,3 +17,8 @@ INSERT INTO tipo_enfermedad (nombre) VALUES ('Congénitas, malformaciones y alte
 INSERT INTO tipo_enfermedad (nombre) VALUES ('Síntomas y observaciones clínicas o de laboratorio');
 INSERT INTO tipo_enfermedad (nombre) VALUES ('Lesiones, heridas, intoxicaciones y otros factores externos');
 INSERT INTO tipo_enfermedad (nombre) VALUES ('Caídas, golpes, y accidentes diversos');
+
+INSERT INTO tipo_exploracion (tipo) VALUES ('Cuello');
+INSERT INTO tipo_exploracion (tipo) VALUES ('Respiratorio');
+INSERT INTO tipo_exploracion (tipo) VALUES ('Cardiovascular');
+INSERT INTO tipo_exploracion (tipo) VALUES ('Abdomen');
