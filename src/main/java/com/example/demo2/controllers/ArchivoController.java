@@ -24,7 +24,7 @@ public class ArchivoController {
     }
 
     @GetMapping("/obtenerArchivo/{id}")
-    public ResponseEntity<byte[]> obtenerArchivo(@PathVariable Long id) {
+    public ResponseEntity<byte[]> obtenerArchivo(@RequestParam Long id) {
         Archivo archivo = archivoService.obtenerArchivo(id);
         if (archivo != null) {
             return ResponseEntity.ok()
@@ -37,7 +37,7 @@ public class ArchivoController {
     }
 
     @GetMapping("/verArchivo/{id}")
-    public ResponseEntity<byte[]> verArchivo(@PathVariable Long id) {
+    public ResponseEntity<byte[]> verArchivo(@RequestParam Long id) {
         Archivo archivo = archivoService.obtenerArchivo(id);
         if (archivo != null) {
             return ResponseEntity.ok()
