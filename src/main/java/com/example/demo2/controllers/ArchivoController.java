@@ -19,9 +19,8 @@ public class ArchivoController {
     private ArchivoService archivoService;
 
     @PostMapping("/subirArchivo")
-    public String subirArchivo(@RequestParam("file") MultipartFile file) throws IOException {
-        archivoService.subirArchivo(file);
-        return "Imagen subida correctamente" ;
+    public Archivo subirArchivo(@RequestParam("file") MultipartFile file) throws IOException {
+        return archivoService.subirArchivo(file);
     }
 
     @GetMapping("/obtenerArchivo/{id}")

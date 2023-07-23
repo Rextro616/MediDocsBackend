@@ -1,5 +1,7 @@
 package com.example.demo2.models;
 
+import com.example.demo2.models.historiaClinica.HistoriaClinica;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 
 import javax.persistence.*;
@@ -22,6 +24,11 @@ public class Archivo {
 
     @Lob
     private byte[] contenido;
+
+    @JsonIgnore
+    @ManyToOne
+    @JoinColumn(name = "id_historiaclinica")
+    HistoriaClinica historiaClinica;
 
 
 }

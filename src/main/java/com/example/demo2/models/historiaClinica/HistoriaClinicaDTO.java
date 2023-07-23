@@ -1,11 +1,18 @@
 package com.example.demo2.models.historiaClinica;
 
+import com.example.demo2.models.Archivo;
 import com.example.demo2.models.cabeza.CabezaDTO;
+import com.example.demo2.models.electrocardiograma.ElectrocardiogramaDTO;
 import com.example.demo2.models.examenFisico.ExamenFisicoDTO;
 import com.example.demo2.models.exploracion.ExploracionDTO;
+import com.example.demo2.models.laboratorio.LaboratorioDTO;
+import com.example.demo2.models.neurologico.NeurologicoDTO;
 import com.example.demo2.models.oftalmologico.OftalmologicoDTO;
 import com.example.demo2.models.paciente.PacienteDTO;
+import com.example.demo2.models.sinromatico.SindromaticoDTO;
 import com.example.demo2.models.tejido.TejidoDTO;
+import com.example.demo2.models.torax.ToraxDTO;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -49,4 +56,16 @@ public class HistoriaClinicaDTO {
     private OftalmologicoDTO oftalmologico;
 
     private List<ExploracionDTO> exploracion;
+
+    private NeurologicoDTO neurologico;
+
+    private LaboratorioDTO laboratorioDTO;
+
+    private ElectrocardiogramaDTO electrocardiograma;
+
+    private ToraxDTO torax;
+
+    private SindromaticoDTO sindromatico;
+
+    private List<Archivo> archivo;
 }

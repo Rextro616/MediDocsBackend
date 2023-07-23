@@ -14,13 +14,13 @@ public class ArchivoService {
 
     private ArchivoRepository archivoRepository;
 
-    public void subirArchivo(MultipartFile file) throws IOException {
+    public Archivo subirArchivo(MultipartFile file) throws IOException {
         Archivo archivo = new Archivo();
         archivo.setNombre(file.getOriginalFilename());
         archivo.setTipo(file.getContentType());
         archivo.setContenido(file.getBytes());
 
-        archivoRepository.save(archivo);
+        return archivoRepository.save(archivo);
     }
 
     public Archivo obtenerArchivo(Long id) {
