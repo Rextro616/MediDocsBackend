@@ -20,9 +20,9 @@ public class UsuarioController {
     @Autowired
     UsuarioService usuarioService;
 
-    @PostMapping("/login")
-    public ResponseEntity<Usuario> login(@RequestParam String usuario, @RequestParam String contrasenia){
-        return new ResponseEntity<>(usuarioService.login(usuario,contrasenia),HttpStatus.OK);
-    }
+//    @PostMapping("/login")
+//    public ResponseEntity<Usuario> login(@RequestParam String usuario, @RequestParam String contrasenia){
+//        return new ResponseEntity<>(usuarioService.login(usuario,contrasenia),HttpStatus.OK);
+//    }
 
 }

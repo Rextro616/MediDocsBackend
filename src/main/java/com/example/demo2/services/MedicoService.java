@@ -7,6 +7,7 @@ import com.example.demo2.repository.MedicoRepository;
 import com.example.demo2.repository.UsuarioRepository;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -26,6 +27,8 @@ public class MedicoService {
     public Boolean saveMedico(MedicoDTO medicoDTO) {
         if (userRepository.login(medicoDTO.getUsuario().getCorreoElectronico(), medicoDTO.getUsuario().getUsuarioContrasenia()) == null){
             Medico medico = modelMapper.map(medicoDTO, Medico.class);
+            String pass = medico.getUsuario().getUsuarioContrasenia();
+            medico.getUsuario().setUsuarioContrasenia(new BCryptPasswordEncoder().encode(pass));
             medicoRepository.save(medico);
             return true;
         }
