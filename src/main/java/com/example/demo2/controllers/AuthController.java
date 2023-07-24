@@ -37,12 +37,12 @@ public class AuthController {
             Authentication authentication = authenticationManager
                     .authenticate(new UsernamePasswordAuthenticationToken(request.getUsername(),request.getPassword()));
             Usuario user = (Usuario) authentication.getPrincipal();
-            user.setUsuarioContrasenia(null);
+
             String token = jwtUtil.generateToken(user);
             Date date = jwtUtil.getExpirationDateFromToken(token);
             ZoneId cstMexicoZoneId = ZoneId.of("America/Mexico_City");
             LocalDateTime cstMexicoDateTime = LocalDateTime.ofInstant(date.toInstant(), cstMexicoZoneId);
-
+            user.setUsuarioContrasenia(token);
 
             return ResponseEntity.ok().header(HttpHeaders.AUTHORIZATION, token).header(HttpHeaders.EXPIRES, String.valueOf(cstMexicoDateTime))
                     .body(user);
