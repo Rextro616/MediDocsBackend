@@ -34,19 +34,19 @@ public class Usuario implements UserDetails {
     @Column(nullable = false, length = 40)
     private String nombre;
 
-    @Column(name = "apellido_paterno", nullable = false, length = 20)
+    @Column(name = "apellido_paterno", nullable = false, length = 100)
     private String apellidoPaterno;
 
-    @Column(name = "apellido_materno", nullable = false, length = 20)
+    @Column(name = "apellido_materno", nullable = false, length = 100)
     private String apellidoMaterno;
 
     @Column( nullable = false, length = 10)
     private SexoEnum sexo;
 
-    @Column(name = "fecha_nacimiento", nullable = false, length = 20)
+    @Column(name = "fecha_nacimiento", nullable = false, length = 100)
     private Date fechaNacimiento;
 
-    @Column(name = "correo_electronico", nullable = false, length = 20)
+    @Column(name = "correo_electronico", nullable = false, length = 100)
     private String correoElectronico;
 
     @JsonIgnore
