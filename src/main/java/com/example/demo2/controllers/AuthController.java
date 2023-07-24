@@ -14,6 +14,9 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.Instant;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.util.Date;
 
 @RestController
@@ -37,7 +40,11 @@ public class AuthController {
             user.setUsuarioContrasenia(null);
             String token = jwtUtil.generateToken(user);
             Date date = jwtUtil.getExpirationDateFromToken(token);
-            return ResponseEntity.ok().header(HttpHeaders.AUTHORIZATION, token).header(HttpHeaders.EXPIRES, String.valueOf(date))
+            ZoneId cstMexicoZoneId = ZoneId.of("America/Mexico_City");
+            LocalDateTime cstMexicoDateTime = LocalDateTime.ofInstant(date.toInstant(), cstMexicoZoneId);
+
+
+            return ResponseEntity.ok().header(HttpHeaders.AUTHORIZATION, token).header(HttpHeaders.EXPIRES, String.valueOf(cstMexicoDateTime))
                     .body(user);
         }catch (BadCredentialsException  exception){
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
