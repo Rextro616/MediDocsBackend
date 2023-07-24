@@ -12,20 +12,22 @@ import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.User;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.Date;
 
 @RestController
-@RequestMapping("/api/auth")
+@RequestMapping("/api/auth/")
 @AllArgsConstructor
+
 public class AuthController {
 
     AuthenticationManager authenticationManager;
 
     JWTUtil jwtUtil;
 
+    @CrossOrigin(originPatterns = "*", methods = {RequestMethod.POST},
+            allowedHeaders = "*", exposedHeaders = {HttpHeaders.AUTHORIZATION, HttpHeaders.EXPIRES}, allowCredentials = "true")
     @PostMapping("login")
     public ResponseEntity<?> login(@RequestBody  AuthCredentialRequest request){
         try{
@@ -33,7 +35,9 @@ public class AuthController {
                     .authenticate(new UsernamePasswordAuthenticationToken(request.getUsername(),request.getPassword()));
             Usuario user = (Usuario) authentication.getPrincipal();
             user.setUsuarioContrasenia(null);
-            return ResponseEntity.ok().header(HttpHeaders.AUTHORIZATION,jwtUtil.generateToken(user))
+            String token = jwtUtil.generateToken(user);
+            Date date = jwtUtil.getExpirationDateFromToken(token);
+            return ResponseEntity.ok().header(HttpHeaders.AUTHORIZATION, token).header(HttpHeaders.EXPIRES, String.valueOf(date))
                     .body(user);
         }catch (BadCredentialsException  exception){
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
