@@ -1,6 +1,5 @@
 package com.example.demo2.controllers;
 
-import com.example.demo2.models.medico.MedicoDTO;
 import com.example.demo2.models.paciente.Paciente;
 import com.example.demo2.models.paciente.PacienteDTO;
 import com.example.demo2.services.PacienteService;
